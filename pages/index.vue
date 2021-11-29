@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="w-10/12 mx-auto mt-24 grid lg:grid-cols-2 gap-5">
-    <!-- <Card v-for="i in 5" :key="i"/> -->
-    <pre>{{stock}}</pre>
+    <div class="w-10/12 mx-auto mt-24 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <Card :title="stock.title" :rows="stock.rows" />
+    <Card :title="pending.title" :rows="pending.rows" />
     </div>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
   computed: {
     stock(){
       return this.$store.getters['stock/getStockDetails'];
+    },
+    pending(){
+      return this.$store.getters['stock/getPendingDetails'];
     }
   }
 }
