@@ -18,6 +18,15 @@ export const state = () => ({
         {name: 'Rabilu', number: '09087654321', address: 'no 9, hankaka road'},
         {name: 'Bush Camel', number: '09087654321', address: 'no 9, hankaka road'},
     ],
-    freeVendors: []
+    freeVendors: [
+        {name: 'Uncle Camel', number: '09087654321', address: 'no 9, hankaka road'},
+        {name: 'Desert Camel', number: '09087654321', address: 'no 9, hankaka road'},
+        {name: 'Arab Camel', number: '09087654321', address: 'no 9, hankaka road'},
+    ]
 });
 
+export const getters = {
+    showVendors(state){
+        return state.allVendors;
+    },
+}

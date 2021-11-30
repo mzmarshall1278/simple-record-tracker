@@ -2,6 +2,7 @@ export const state = () => ({
     stock: {
         quantity: 300,
         weight: 100,
+        value: 1500
     },
     rate: 15,
     MonthlyWeightTarget:1000,
@@ -37,8 +38,20 @@ export const getters =  {
             rows: [
               {label: 'Quantity', value: 'Unknown'},
               {label: 'Weight', value: state.MonthlyWeightTarget - state.stock.weight},
-              {label: 'Value', value: `NGN ${(state.MonthlyWeightTarget - state.stock.weight) * state.rate}`},
+              {label: 'Value', value: `Unknown`},
               {label: 'Vendors', value: rootState.vendors.allVendors.length - rootState.vendors.clearedVendors.length}
+            ]
+          }
+          return details
+    },
+    getFreeDetails(state, getters, rootState){
+        const details = {
+            title: 'Free Items',
+            rows: [
+              {label: 'Quantity', value: state.free.quantity},
+              {label: 'Weight', value: state.free.weight},
+              {label: 'Value', value: `NGN ${state.free.value}`},
+              {label: 'Vendors', value: rootState.vendors.freeVendors.length}
             ]
           }
           return details

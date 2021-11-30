@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-5xl font-black text-blue-500 text-center mt-12">INVENTORY</div>
+    <div class="text-5xl font-black text-blue-500 text-center mt-12">Vendors</div>
     <div class="w-10/12 mx-auto mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
     <Card :title="stock.title" :rows="stock.rows" />
     <Card :title="pending.title" :rows="pending.rows" />

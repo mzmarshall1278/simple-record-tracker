@@ -4,8 +4,8 @@
             <h1 class="text-center font-semibold py-4 text-5xl text-green-400">{{title}}</h1>
             <div class="pt-5 lg:px-8 text-xl font-semibold text-green-900 w-4/5 mx-auto ">
                 <div class="flex justify-between py-3" v-for="(row, key) in rows" :key="key">
-                    <h1>{{row.label}}</h1>-
-                    <h1>{{row.value}}</h1>
+                    <h1 class="text-blue-400">{{row.label}}</h1>-
+                    <h1 class="text-red-400">{{row.value}}</h1>
                 </div>
             </div>
         </div>
