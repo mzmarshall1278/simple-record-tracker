@@ -1,0 +1,33 @@
+{
+    "vendors": [
+        {"name": "Edison Cavani", "address": "Uruguay", "LGA": "gwale", "phone": "09098766732", "deal": "2"},
+        {"name": "Marcus Rasford", "address": "Englang", "LGA": "gwale", "phone": "09098195432", "deal": "1"},
+        {"name": "Christiano Ronaldo", "address": "Portugal", "LGA": "dala", "phone": "09097865432", "deal": "3"},
+        {"name": "Jadon Sancho", "address": "England", "LGA": "kmc", "phone": "09098764332", "deal": "2"},
+        {"name": "Mason Greenwood ", "address": "England", "LGA": "gaya", "phone": "09043765432", "deal": "2"},
+        {"name": "Anthony Martial", "address": "France", "LGA": "dala", "phone": "09098325432", "deal": "2"},
+        {"name": "Jesse Lingard", "address": "England", "LGA": "gaya", "phone": "09098716432", "deal": "2"},
+        {"name": "Bruno Fernandez", "address": "Portugal", "LGA": "gwale", "phone": "09064765432", "deal": "2"},
+        {"name": "Paul Pogba", "address": "France", "LGA": "kabo", "phone": "09098767832", "deal": "3"},
+        {"name": "Juan Mata", "address": "Spain", "LGA": "dala", "phone": "09098045432", "deal": "1"},
+        {"name": "Donny Van De Beek", "address": "Holland", "LGA": "kmc", "phone": "09098115432", "deal": "2"},
+        {"name": "Fred", "address": "Brazil", "LGA": "dala", "phone": "09098765411", "deal": "2"},
+        {"name": "Scott McTominay", "address": "Scotland", "LGA": "kumbotso", "phone": "09098765442", "deal": "1"},
+        {"name": "Namenja Matic", "address": "Serbia", "LGA": "kmc", "phone": "09228765662", "deal": "1"},
+        {"name": "Aaron Wan Bissaka", "address": "England", "LGA": "gaya", "phone": "09096165432", "deal": "3"},
+        {"name": "Victor Lindelof", "address": "Sweden", "LGA": "gwale", "phone": "09098740432", "deal": "2"},
+        {"name": "Rafael Varane", "address": "France", "LGA": "gwale", "phone": "09098765632", "deal": "3"},
+        {"name": "Eric Baily", "address": "Ivory Coast", "LGA": "kumbotso", "phone": "09098738432", "deal": "2"},
+        {"name": "Harry Maguire", "address": "England", "LGA": "kmc", "phone": "09098765467", "deal": "3"},
+        {"name": "Diego Dalot", "address": "Spain", "LGA": "dala", "phone": "09098765662", "deal": "3"},
+        {"name": "Luke Shaw", "address": "England", "LGA": "kabo", "phone": "09098765772", "deal": "3"},
+        {"name": "Alex Telles", "address": "Spain", "LGA": "gwale", "phone": "09098768832", "deal": "3"},
+        {"name": "David De gea", "address": "Spain",  "LGA": "kumbotso","phone": "09099765432", "deal": "2"},
+        {"name": "Dean Henderson", "address": "England", "LGA": "gaya", "phone": "09098005432", "deal": "2"},
+        {"name": "Tom Heaton", "address": "England", "LGA": "kmc", "phone": "09098765465", "deal": "2"},
+        {"name": "Lee grant", "address": "England", "LGA": "dala", "phone": "09098765222", "deal": "2"},
+        {"name": "Amad Diallo", "address": "France", "LGA": "gwale", "phone": "09098733432", "deal": "2"},
+        {"name": "Shola Shoretire", "address": "Brazil", "LGA": "kumbotso", "phone": "09095665432", "deal": "1"},
+        {"name": "ANthony Elanga", "address": "France", "LGA": "gwale", "phone": "09098765992", "deal": "2"}
+    ]
+}

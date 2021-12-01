@@ -10,21 +10,16 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default { 
   data(){
     return {
-
+      page: 1,
     }
   },
-  computed: {
-    stock(){
-      return this.$store.getters['stock/getStockDetails'];
-    },
-    pending(){
-      return this.$store.getters['stock/getPendingDetails'];
-    },
-    free(){
-      return this.$store.getters['stock/getFreeDetails'];
+  methods: {
+    getVendors(page){
+      axios.get(`http://localhost:3000/vendors?page=${page}&`)
     }
   }
 }
