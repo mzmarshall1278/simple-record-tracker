@@ -6,6 +6,7 @@
                 <ul class="flex justify-between mr-12 text-white text-lg mt-2 p-4">
                     <li><router-link class="hover:bg-white hover:text-blue-400 py-4 px-6 rounded-lg" to="/">Home</router-link></li>
                     <li><router-link class="hover:bg-white hover:text-blue-400 py-4 px-6 rounded-lg" to="/entry">Entry</router-link></li>
+                    <li><router-link class="hover:bg-white hover:text-blue-400 py-4 px-6 rounded-lg" to="/deals">Deals</router-link></li>
                     <li><router-link class="hover:bg-white hover:text-blue-400 py-4 px-6 rounded-lg" to="/sellers">Sellers</router-link></li>
                     <!-- <li>stock</li> -->
                 </ul>

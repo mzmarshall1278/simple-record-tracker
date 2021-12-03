@@ -1,6 +1,6 @@
 <template>
-    <table class="w-full bg-red-100">
-        <tr>
+    <table class="w-full bg-blue-100 mt-5">
+        <tr class="">
             <th class="">
                 <td v-for="(col, key) in columns" :key="key">{{col.label}}</td>
             </th>                    
@@ -12,11 +12,6 @@
         </tr>
     </table>
 </template>
-r v-for="(row,key) in data" :key="key">
-            <tbody>
-                <td v-for="(item, key) in columns" :key="key">{{row[item.value]}}</td>
-            </tbody>
-        </tr>
 <script>
 export default {
     props: {
