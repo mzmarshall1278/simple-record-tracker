@@ -34,9 +34,6 @@ export default {
         },
         link: {
             type: Object,
-            default(){
-                return {path: '/sellers/', id: 'phone'}
-            }
         }
     },
     data() {
@@ -60,7 +57,7 @@ export default {
             console.log(index);
         },
         open(row){
-            console.log(`${this.link.path}${row[this.link.id]}`);
+          if(this.link) this.$router.push(`${this.link.path}${row[this.link.id]}`);
         }
     }
 

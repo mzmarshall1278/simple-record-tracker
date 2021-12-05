@@ -5,6 +5,7 @@
       <AppTable
       :columns="columns"
       :data="vendors"
+      :link="link"
     />
     </div>
   </div>
@@ -15,14 +16,15 @@ import axios from 'axios';
 export default {
     data() {
         return {
-          columns: [
-            {value: 'name', label: 'Name'},
-            {value: 'address', label: 'Address'},
-            {value: 'LGA', label: 'LGA'},
-            {value: 'phone', label: 'Phone Number'},
-            {value: 'deal', label: 'Deal'},
-          ],
-          vendors: [],
+            link: {path: 'sellers/', id: 'phone'},
+            columns: [
+                {value: 'name', label: 'Name'},
+                {value: 'address', label: 'Address'},
+                {value: 'LGA', label: 'LGA'},
+                {value: 'phone', label: 'Phone Number'},
+                {value: 'deal', label: 'Deal'},
+            ],
+             vendors: [],
             page: 1,
         };
     },

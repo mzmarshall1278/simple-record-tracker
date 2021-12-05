@@ -28,6 +28,18 @@
         {"name": "Lee grant", "address": "England", "LGA": "dala", "phone": "09098765222", "deal": "2"},
         {"name": "Amad Diallo", "address": "France", "LGA": "gwale", "phone": "09098733432", "deal": "2"},
         {"name": "Shola Shoretire", "address": "Brazil", "LGA": "kumbotso", "phone": "09095665432", "deal": "1"},
-        {"name": "ANthony Elanga", "address": "France", "LGA": "gwale", "phone": "09098765992", "deal": "2"}
+        {"name": "Anthony Elanga", "address": "France", "LGA": "gwale", "phone": "09098765992", "deal": "2"}
+    ],
+    "transactions": [
+        {"id": "1","date": "12/12/2021", "weight": "23", "quantity": "250", "sellers": "8", "price": "480"},
+        {"id": "2","date": "11/12/2021", "weight": "20", "quantity": "240", "sellers": "9", "price": "500"},
+        {"id": "3","date": "10/12/2021", "weight": "27", "quantity": "270", "sellers": "12", "price": "580"},
+        {"id": "4","date": "9/12/2021", "weight": "12", "quantity": "280", "sellers": "7", "price": "480"},
+        {"id": "5","date": "8/12/2021", "weight": "33", "quantity": "300", "sellers": "9", "price": "530"},
+        {"id": "6","date": "6/12/2021", "weight": "58", "quantity": "570", "sellers": "1", "price": "900"},
+        {"id": "7","date": "5/12/2021", "weight": "35", "quantity": "340", "sellers": "7", "price": "570"},
+        {"id": "8","date": "4/12/2021", "weight": "23", "quantity": "250", "sellers": "5", "price": "480"},
+        {"id": "9","date": "3/12/2021", "weight": "21", "quantity": "220", "sellers": "9", "price": "450"},
+        {"id": "10","date": "1/12/2021", "weight": "23", "quantity": "250", "sellers": "5", "price": "480"}
     ]
 }
