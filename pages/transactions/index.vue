@@ -20,7 +20,7 @@ export default {
     },
     data() {
         return {
-            link: {path: '/transactions/', id: 'id'},
+            link: {path: '/transactions/', id: 'date'},
             columns: [
                 {label: 'Date', value: 'date'},
                 {label: 'Weight', value: 'weight'},

@@ -57,7 +57,7 @@ export default {
             console.log(index);
         },
         open(row){
-          if(this.link) this.$router.push(`${this.link.path}${row[this.link.id]}`);
+          if(this.link) this.$router.push({path: row[this.link.id], append: true});
         }
     }
 
