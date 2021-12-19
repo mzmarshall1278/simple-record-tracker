@@ -4,7 +4,6 @@
     <AppTable
     :data="transactions"
     :columns="columns"
-    :link="link"
     />
    
   </div>
@@ -18,7 +17,6 @@
     },
         data(){
             return {
-                link: {path: '/single/', id: 'vendorId'},
                 columns: [
                     {label: 'Vendor', value: 'vendor'},
                     {label: 'Weight', value: 'weight'},
