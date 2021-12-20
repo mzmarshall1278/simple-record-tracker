@@ -1,6 +1,11 @@
 import axios from 'axios';
 <template>
   <div>
+      <div class="w-full text-center mt-4"> 
+          <nuxt-link to="/transaction/new">
+            <div class="w-1/2 mx-auto py-5 rounded-full text-2xl font-bold bg-blue-500 text-white">Add Transaction</div>
+          </nuxt-link>
+      </div>
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions</div>
     <AppTable
     :data="transactions"
