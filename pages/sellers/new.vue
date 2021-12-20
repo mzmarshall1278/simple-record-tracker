@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-5xl font-black text-blue-500 text-center mt-12">Add New Transactions</div>
+        <div class="text-5xl font-black text-blue-500 text-center mt-12">Add New Vendor</div>
         <form @submit.prevent="addNew">
             <div class="w-2/5 text-center mx-auto py-6 px-8 mt-4">
                 <div class="mt-8">

@@ -2,7 +2,7 @@ import axios from 'axios';
 <template>
   <div>
       <div class="w-full text-center mt-4"> 
-          <nuxt-link to="/transaction/new">
+          <nuxt-link to="/transactions/new">
             <div class="w-1/2 mx-auto py-5 rounded-full text-2xl font-bold bg-blue-500 text-white">Add Transaction</div>
           </nuxt-link>
       </div>
