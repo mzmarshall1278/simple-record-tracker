@@ -7,12 +7,13 @@ import axios from 'axios';
           </nuxt-link>
       </div>
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions</div>
-    <AppTable
-    :data="transactions"
-    :columns="columns"
-    :link="link"
-    />
-   
+    <div class="w-10/12 mx-auto">
+        <AppTable
+        :data="transactions"
+        :columns="columns"
+        :link="link"
+        />
+    </div>
   </div>
 </template>
 
