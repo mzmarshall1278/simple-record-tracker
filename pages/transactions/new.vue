@@ -17,10 +17,12 @@
                 </div>
                 <div class="mt-8 w-full">
                     <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = true">Search Seller</div>
-                    <ul class="w-full mt-4" v-if="showDropDown">
-                        <li class="w-full mb-2"><input type="text" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" @input="debounceInput" /></li>
-                        <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
-                    </ul>
+                    <div class="w-full mt-4" v-if="showDropDown">
+                        <div class="w-full mb-2"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" @input="debounceInput" /></div>
+                        <ul v-if="searchSeller" >
+                            <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <button type="submit" class=" mt-4 rounded-xl w-full py-4 pl-3 bg-blue-500 text-white">Save Transaction</button>
@@ -37,6 +39,7 @@ import debounce from 'debounce'
         data(){
             return {
                 showDropDown: false,
+                searchSeller: '',
                 date: '',
                 weight: '',
                 price: '',
@@ -56,8 +59,11 @@ import debounce from 'debounce'
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
                 console.log(transactionDetails);
             },
-            debounceInput(){
-                debounce(getSellers)
+            debounceInput: debounce((e)=> {
+                this.getSellers(e.target.value)
+            }),
+            getSellers(filter){
+                // get sellers with filter
             }
         }
     }
