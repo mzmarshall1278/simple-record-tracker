@@ -18,8 +18,8 @@
                 <div class="mt-8 w-full">
                     <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = true">Search Seller</div>
                     <ul class="w-full mt-4" v-if="showDropDown">
-                        <li class="w-full mb-2"><input type="text" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" /></li>
-                        <li class="w-full py-4 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
+                        <li class="w-full mb-2"><input type="text" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" @input="debounceInput" /></li>
+                        <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
                     </ul>
                 </div>
 
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import debounce from 'debounce'
     export default {
         data(){
             return {
@@ -55,6 +56,9 @@
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
                 console.log(transactionDetails);
             },
+            debounceInput(){
+                debounce(getSellers)
+            }
         }
     }
 </script>, 
