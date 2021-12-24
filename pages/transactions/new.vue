@@ -15,12 +15,17 @@
                 <div class="mt-8">
                     <input placeholder="Quantity" name="name" v-model="quantity" type="number" class="w-full py-4 pl-3 border-3 border-blue-500"/>
                 </div>
-                <!-- <div class="mt-8">
-                    <button>Search Seller</button>
-                </div> -->
+                <div class="mt-8 w-full">
+                    <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = true">Search Seller</div>
+                    <ul class="w-full mt-4" v-if="showDropDown">
+                        <li class="w-full mb-2"><input type="text" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" /></li>
+                        <li class="w-full py-4 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
+                    </ul>
+                </div>
+
+                <button type="submit" class=" mt-4 rounded-xl w-full py-4 pl-3 bg-blue-500 text-white">Save Transaction</button>
             </div>
             <div>
-                <button type="submit">Save Transaction</button>
             </div>
         </form>
     </div>
@@ -30,18 +35,26 @@
     export default {
         data(){
             return {
+                showDropDown: false,
                 date: '',
                 weight: '',
                 price: '',
                 quantity: '',
-                seller: ''
+                seller: '',
+                sellers: [
+                    {name: "Aminu Ali Bala"},
+                    {name: "Aisha Habibu"},
+                    {name: "Nura Anas"},
+                    {name: "Garba Tanko"},
+                    {name: "Sani Bello"}
+                ]
             }
         },
         methods: {
             addNew(){
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
                 console.log(transactionDetails);
-            }
+            },
         }
     }
 </script>, 
