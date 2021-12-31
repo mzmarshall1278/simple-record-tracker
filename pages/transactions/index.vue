@@ -20,19 +20,23 @@ import axios from 'axios';
 <script>
 export default {
     async asyncData({$axios}){
-           const transactions = await $axios.$get(`http://localhost:3000/transactions?page=1`);
+           const transactions = await $axios.$get(`http://localhost:3000/transaction`, {
+               headers: {
+                   'Content-Type': 'application/json'
+               }
+           });
            return {transactions};
                 
     },
     data() {
         return {
-            link: {path: '/transactions/', id: 'date', append: true},
+            link: {path: '/transactions/', id: '_id', append: true},
             columns: [
-                {label: 'Date', value: 'date'},
-                {label: 'Weight', value: 'weight'},
-                {label: 'Quantity', value: 'quantity'},
-                {label: 'Total Price', value: 'price'},
-                {label: 'Total Sellers', value: 'sellers'}
+                {label: 'Date', value: '_id'},
+                {label: 'Total Transactions', value: 'totalWeight'},
+                {label: 'Total Sale', value: 'totalSale'},
+                {label: 'Total Weight', value: 'totalWeight'},
+                {label: 'Total Quantity', value: 'totalQuantity'}
             ],
             page: 1
         };

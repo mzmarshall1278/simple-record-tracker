@@ -10,19 +10,19 @@
 </template>
 <script>
     export default{
-        async asyncData({$axios}){
-           const transactions = await $axios.$get(`http://localhost:3000/dayTransactions?page=1`);
+        async asyncData({$axios ,params}){
+           const transactions = await $axios.$get(`http://localhost:3000/transaction?date=${params.id}`);
+           console.log(transactions);
            return {transactions};
                 
     },
         data(){
             return {
                 columns: [
-                    {label: 'Vendor', value: 'vendor'},
+                    {label: 'Vendor', value: 'seller', child: 'name'},
                     {label: 'Weight', value: 'weight'},
                     {label: 'Quantity', value: 'quantity'},
-                    {label: 'Total Price', value: 'price'},
-                    {label: 'Completed', value: 'completed'}
+                    {label: 'Price', value: 'price'},
                 ],
             page: 1
             }
