@@ -8,7 +8,10 @@
             </thead>
             <tbody>
             <tr v-for="(row,key) in data" :key="key" @click="open(row)">
-                <td v-for="(item, key) in columns" :key="key">{{row[item.value]}}</td>
+                <td v-for="(item, key) in columns" :key="key">
+                    <span v-if="typeof row[item.value] !=='object'">{{row[item.value] || 0}}</span>
+                    <span v-if="typeof row[item.value] =='object'">{{row[item.value][0][item.child]}}</span>
+                </td>
             </tr>
             </tbody>
         </table>
