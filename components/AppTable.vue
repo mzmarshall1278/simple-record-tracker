@@ -31,12 +31,11 @@ export default {
         data: {
             type: Array
         },
-        objectCount: {
-            type: Number,
-            default: 28
-        },
         link: {
             type: Object,
+        },
+        count: {
+            type: Number
         }
     },
     data() {
@@ -46,7 +45,7 @@ export default {
     },
     computed: {
         pages(){
-            return Math.ceil(this.objectCount/10);
+            return Math.ceil(this.count/10);
         },
     },
     methods: {
