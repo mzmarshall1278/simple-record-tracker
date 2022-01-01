@@ -33,7 +33,7 @@ export default {
             link: {path: '/transactions/', id: '_id', append: true},
             columns: [
                 {label: 'Date', value: '_id'},
-                {label: 'Total Transactions', value: 'totalWeight'},
+                {label: 'Total Transactions', value: 'totalTransactions'},
                 {label: 'Total Sale', value: 'totalSale'},
                 {label: 'Total Weight', value: 'totalWeight'},
                 {label: 'Total Quantity', value: 'totalQuantity'}
