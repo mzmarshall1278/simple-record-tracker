@@ -11,6 +11,7 @@
       :columns="columns"
       :data="vendors"
       :link="link"
+      :count="count"
     />
     </div>
   </div>
@@ -27,16 +28,21 @@ export default {
                 {value: 'address', label: 'Address'},
                 {value: 'LGA', label: 'LGA'},
                 {value: 'phone', label: 'Phone Number'},
+                {value: 'status', label: 'Status'},
                 {value: 'deal', label: 'Deal'},
+                {value: 'dateJoined', label: 'Date Joined'},
+                
             ],
              vendors: [],
             page: 1,
+            count: 0
         };
     },
     methods: {
         getVendors(page) {
-            axios.get(`http://localhost:3000/vendors?page=${page}&`).then(res => {
-                this.vendors = res.data
+            axios.get(`http://localhost:3000/seller?page=${page}`).then(res => {
+                this.vendors = res.data.sellers;
+                this.count = res.data.total
             });
         }
     },
