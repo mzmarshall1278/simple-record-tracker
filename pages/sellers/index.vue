@@ -13,12 +13,11 @@
       :link="link"
       :count="count"
     />
-    </div>
+    </div> 
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 export default {
     data() {
         return {
@@ -40,7 +39,7 @@ export default {
     },
     methods: {
         getVendors(page) {
-            axios.get(`http://localhost:3000/seller?page=${page}`).then(res => {
+            this.$axios.get(`http://localhost:3000/seller?page=${page}`).then(res => {
                 this.vendors = res.data.sellers;
                 this.count = res.data.total
             });
