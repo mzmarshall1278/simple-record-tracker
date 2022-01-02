@@ -29,7 +29,7 @@ export default {
             type: Array
         },
         data: {
-            type: Array
+           type: Array
         },
         link: {
             type: Object,
@@ -45,7 +45,8 @@ export default {
     },
     computed: {
         pages(){
-            return Math.ceil(this.count/10);
+            if(this.count) return Math.ceil(this.count/10);
+            else return 1
         },
     },
     methods: {
