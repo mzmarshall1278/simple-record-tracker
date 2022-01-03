@@ -2,16 +2,16 @@
     <div class="w-5/6 mx-auto">
         <div class="text-5xl font-black text-blue-500 text-center mt-12">Seller : {{seller.name}}</div>
 
-        <div class="w-full mt-12">
-            <div class="flex justify-between w-3/6"><span>PHONE NUMBER</span> <span>{{seller.phone}}</span></div>
-            <div class="flex justify-between w-3/6"><span>LGA</span> <span>{{seller.LGA}}</span></div>
-            <div class="flex justify-between w-3/6"><span>ADDRESS</span> <span>{{seller.address}}</span></div>
-            <div class="flex justify-between w-3/6"><span>DEAL</span> <span>{{seller.deal == 0 ? 'TWO WEEKS' : seller.deal == 1 ? 'MONTHLY' : 'NO TIME RESTRICTION'}}</span></div>
-            <div class="flex justify-between w-3/6"><span>STATUS</span> <span>{{seller.status}}</span></div>
-            <div class="flex justify-between w-3/6"><span>DATE JOINED</span> <span>{{new Date(seller.dateJoined).toLocaleDateString()}}</span></div>
-            <button @click="getTransactions">Show Transactions</button>
+        <div class="w-4/6 mt-12 mx-auto">
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">PHONE NUMBER</span> <span class="text-blue-500">{{seller.phone}}</span></div>
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">LGA</span> <span class="text-blue-500">{{seller.LGA}}</span></div>
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">ADDRESS</span> <span class="text-blue-500">{{seller.address}}</span></div>
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">DEAL</span> <span class="text-blue-500">{{seller.deal == 0 ? 'TWO WEEKS' : seller.deal == 1 ? 'MONTHLY' : 'NO TIME RESTRICTION'}}</span></div>
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">STATUS</span> <span class="text-blue-500">{{seller.status}}</span></div>
+            <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">DATE JOINED</span> <span class="text-blue-500">{{new Date(seller.dateJoined).toLocaleDateString()}}</span></div>
+            <button @click="getTransactions" class="mt-5 bg-blue-500 text-white p-4 rounded hover:bg-white hover:text-blue-500">Show Transactions</button>
         </div>
-       <div>
+       <div v-if="transactions.transactions">
             <AppTable
             :data="transactions.transactions"
             :columns="columns"
