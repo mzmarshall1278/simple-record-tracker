@@ -12,7 +12,6 @@
     export default{
         async asyncData({$axios ,params}){
            const transactions = await $axios.$get(`http://localhost:3000/transaction?date=${params.id}`);
-           console.log(transactions);
            return {transactions};
                 
     },
