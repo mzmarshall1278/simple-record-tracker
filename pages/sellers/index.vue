@@ -21,7 +21,7 @@
 export default {
     data() {
         return {
-            link: {path: 'sellers/', id: 'phone'},
+            link: {path: 'sellers/', id: 'phone', append: true},
             columns: [
                 {value: 'name', label: 'Name'},
                 {value: 'address', label: 'Address'},
