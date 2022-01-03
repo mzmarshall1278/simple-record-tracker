@@ -9,6 +9,7 @@
             <div class="flex justify-between w-3/6"><span>DEAL</span> <span>{{seller.deal == 0 ? 'TWO WEEKS' : seller.deal == 1 ? 'MONTHLY' : 'NO TIME RESTRICTION'}}</span></div>
             <div class="flex justify-between w-3/6"><span>STATUS</span> <span>{{seller.status}}</span></div>
             <div class="flex justify-between w-3/6"><span>DATE JOINED</span> <span>{{new Date(seller.dateJoined).toLocaleDateString()}}</span></div>
+            <button @click="getTransactions">Show Transactions</button>
         </div>
         <!-- <AppTable
     :data=""
@@ -19,12 +20,23 @@
 </template>
 <script>
     export default {
-
+        data(){
+            return {
+                transactions: [],
+            }
+        },
         async asyncData({$axios, params}){
             const seller = await $axios.$get(`http://localhost:3000/seller/${params.id}`);
             // const transactions = await $axios.$get(`http://localhost:3000/transactions?sellerId=${seller.id}`);
             console.log(seller);
            return {seller}; 
         },
+        methods: {
+            getTransactions(){
+                this.$axios.$get(`http://localhost:3000/transaction?sellerId=${this.seller.id}`).then(res=> {
+                    console.log(res);
+                })
+            }
+        }
     }
 </script>
