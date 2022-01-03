@@ -11,11 +11,13 @@
             <div class="flex justify-between w-3/6"><span>DATE JOINED</span> <span>{{new Date(seller.dateJoined).toLocaleDateString()}}</span></div>
             <button @click="getTransactions">Show Transactions</button>
         </div>
-        <!-- <AppTable
-    :data=""
-    :columns=""
-    :count=""
-    /> -->
+       <div>
+            <AppTable
+            :data="transactions.transactions"
+            :columns="columns"
+            :count="transactions.count"
+            />
+       </div>
     </div>
 </template>
 <script>
@@ -23,6 +25,12 @@
         data(){
             return {
                 transactions: [],
+                columns: [
+                    {label: 'Date', value: 'date'},
+                    {label: 'Weight', value: 'weight'},
+                    {label: 'Quantity', value: 'quantity'},
+                    {label: 'Price', value: 'price'},
+                ]
             }
         },
         async asyncData({$axios, params}){
@@ -33,8 +41,9 @@
         },
         methods: {
             getTransactions(){
-                this.$axios.$get(`http://localhost:3000/transaction?sellerId=${this.seller.id}`).then(res=> {
-                    console.log(res);
+                console.log(this.seller._id);
+                this.$axios.$get(`http://localhost:3000/transaction?sellerId=${this.seller._id}`).then(res=> {
+                    this.transactions = res;
                 })
             }
         }
