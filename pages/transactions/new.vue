@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="text-5xl font-black text-blue-500 text-center mt-12">Add New Transactions</div>
-        <form @submit.prevent="addNew">
+        <form v-on:submit.prevent="addNew">
             <div class="lg:w-2/5 text-center mx-auto py-6 px-8 mt-4 bg-blue-50 rounded-xl">
                 <div class="mt-8">
                 <input name="name" type="date" v-model="date" class="w-full py-4  px-6 pl-3 border-3 border-blue-500 text-gray-400">
@@ -18,7 +18,7 @@
                 <div class="mt-8 w-full">
                     <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = true">Search Seller</div>
                     <div class="w-full mt-4" v-if="showDropDown">
-                        <div class="w-full mb-2"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-3 border-blue-500" @input="debounceInput" /></div>
+                        <div class="w-full mb-2"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-2 rounded focus:border-blue-700 border-blue-500" v-on:keyup.space="debounceInput" /></div>
                         <ul v-if="searchSeller" >
                             <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
                         </ul>
@@ -45,13 +45,7 @@ import debounce from 'debounce'
                 price: '',
                 quantity: '',
                 seller: '',
-                sellers: [
-                    {name: "Aminu Ali Bala"},
-                    {name: "Aisha Habibu"},
-                    {name: "Nura Anas"},
-                    {name: "Garba Tanko"},
-                    {name: "Sani Bello"}
-                ]
+                sellers: []
             }
         },
         methods: {
@@ -59,12 +53,16 @@ import debounce from 'debounce'
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
                 console.log(transactionDetails);
             },
-            debounceInput: debounce((e)=> {
-                this.getSellers(e.target.value)
-            }),
             getSellers(filter){
-                // get sellers with filter
-            }
+                const param = filter.toUpperCase();
+                this.$axios.$get(`http://localhost:3000/seller?name=${param}`).then(res => {
+                    console.log(res);
+                    this.sellers = res;
+                })
+            },
+            debounceInput: debounce(function (e) {
+                this.getSellers(e.target.value)
+            }, 300)
         }
     }
 </script>, 
