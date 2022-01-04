@@ -20,7 +20,7 @@
                     <div class="w-full mt-4" v-if="showDropDown">
                         <div class="w-full mb-2"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-2 rounded focus:border-blue-700 border-blue-500" v-on:keyup.space="debounceInput" /></div>
                         <ul v-if="searchSeller" >
-                            <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key">{{seller.name}}</li>
+                            <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key" @click="setUser(seller)">{{seller.name}}</li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ import debounce from 'debounce'
                 price: '',
                 quantity: '',
                 seller: '',
-                sellers: []
+                sellers: [],
             }
         },
         methods: {
@@ -59,6 +59,9 @@ import debounce from 'debounce'
                     console.log(res);
                     this.sellers = res;
                 })
+            },
+            setUser(user){
+                this.seller = user._id;
             },
             debounceInput: debounce(function (e) {
                 this.getSellers(e.target.value)
