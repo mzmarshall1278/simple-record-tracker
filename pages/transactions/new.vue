@@ -51,7 +51,9 @@ import debounce from 'debounce'
         methods: {
             addNew(){
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
-                console.log(transactionDetails);
+                return this.$axios.$post('http://localhost:3000/transaction', transactionDetails).then(res=> {
+                    console.log(res);
+                })
             },
             getSellers(filter){
                 const param = filter.toUpperCase();
