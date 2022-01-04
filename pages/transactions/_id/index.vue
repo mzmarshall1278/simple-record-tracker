@@ -18,10 +18,10 @@
         data(){
             return {
                 columns: [
-                    {label: 'Vendor', value: 'seller', child: 'name'},
-                    {label: 'Weight', value: 'weight'},
-                    {label: 'Quantity', value: 'quantity'},
-                    {label: 'Price', value: 'price'},
+                        {label: 'Vendor', value: 'seller', child: 'name'},
+                        {label: 'Weight', value: 'weight'},
+                        {label: 'Quantity', value: 'quantity'},
+                        {label: 'Price', value: 'price'},
                 ],
             page: 1
             }
