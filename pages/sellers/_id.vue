@@ -16,6 +16,7 @@
             :data="transactions.transactions"
             :columns="columns"
             :count="transactions.count"
+            :url="`http://localhost:3000/seller/${param}`"
             />
        </div>
     </div>
@@ -38,6 +39,11 @@
             // const transactions = await $axios.$get(`http://localhost:3000/transactions?sellerId=${seller.id}`);
             console.log(seller);
            return {seller}; 
+        },
+        computed: {
+            param(){
+                return this.$route.params.id
+            }
         },
         methods: {
             getTransactions(){
