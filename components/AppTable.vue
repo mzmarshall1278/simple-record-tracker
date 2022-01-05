@@ -1,3 +1,4 @@
+import axios from 'axios';
 <template>
     <div class="mb-24">
         <table class="w-full">
@@ -16,8 +17,8 @@
             </tbody>
         </table>
         <div class="flex w-auto mx-auto ">
-            <button :disabled="page == 1" @click="previous" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0 disabled:cursor-not-allowed"> &lt;</button>
-            <button @click="changePage(index)" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white" v-for="(page, index) in pages" :key="index">{{index+1}}</button>
+            <button :disabled="page == 1" @click="previous" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0 disabled:cursor-not-allowed" > &lt;</button>
+            <button @click="changePage(index)" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white" v-for="(page, index) in pages" :key="index" >{{index+1}}</button>
             <button  :disabled="page == pages" @click="next" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0">&gt;</button>
         </div>
     </div>
@@ -36,6 +37,9 @@ export default {
         },
         count: {
             type: Number
+        },
+        url: {
+            type: String
         }
     },
     data() {
@@ -50,18 +54,27 @@ export default {
         },
     },
     methods: {
+        getData(){
+            return this.$axios.$get(`${this.url}`).then(res=> {
+                console.log(res)
+            })
+        },
         previous(){
             console.log('previous');
         },
         next(){
-            console.log('next');
+            this.$emit('next', this.page + 1);
         },
         changePage(index){
-            console.log(index);
+            this.$emit('next', this.page - 1);
         },
         open(row){
           if(this.link) this.$router.push({path: row[this.link.id], append: this.link.append});
         }
+    },
+    mounted(){
+        console.log(this.url)
+        return this.getData()
     }
 
 }
