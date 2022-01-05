@@ -5,6 +5,8 @@
     :data="transactions.transactions"
     :columns="columns"
     :count="transactions.total"
+    :url="`http://localhost:3000/transaction?date=${date}`"
+
     />
   </div>
 </template>
