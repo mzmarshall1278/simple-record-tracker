@@ -12,7 +12,7 @@
                 <div class="mt-8">
 
                     <label for="lga" class="text-left">Local Government Area</label>
-                    <select name="lga" id="" required="true" class="w-full py-4 pl-3 border-3 mt-2 bg-white">
+                    <select name="lga" id="" v-model="LGA" required="true" class="w-full py-4 pl-3 border-3 mt-2 bg-white">
                         <option v-for="(lga, key) in lgaOptions" :key="key" :value="lga.value" class="w-full py-4 pl-3">{{lga.text}}</option>
                     </select>
                 </div>
@@ -24,8 +24,8 @@
                 </div>
                 <div class="mt-8">
                     <label for="status" class="text-left">STATUS</label>
-                    <select name="status" id="" required="true" class="w-full py-4 pl-3 border-3 mt-2 bg-white">
-                        <option v-for="(lga, key) in lgaOptions" :key="key" :value="lga.value" class="w-full py-4 pl-3">{{lga.text}}</option>
+                    <select name="status" id="" v-model="status" required="true" class="w-full py-4 pl-3 border-3 mt-2 bg-white">
+                        <option v-for="(lga, key) in statusOptions" :key="key" :value="lga.value" class="w-full py-4 pl-3">{{lga.text}}</option>
                     </select>
                 </div>
                 <button type="submit" class=" mt-4 rounded-xl w-full py-4 pl-3 bg-blue-500 text-white">Save Seller</button>
@@ -44,6 +44,11 @@
                 LGA: '',
                 phone: '',
                 deal: 1,
+                status: '',
+                statusOptions: [
+                    {text: 'Completed', value: 'COMPLETED'},
+                    {text: 'Pending', value: 'PENDING'},
+                ],
                 lgaOptions: [
                     {text: 'Gwale', value: 'GWALE'},
                     {text: 'Dala', value: 'DALA'},
@@ -61,10 +66,11 @@
         },
         methods: {
             addNew(){
-                const seller = { name: this.name.toUpperCase(), adrress: this.address, LGA : this.LGA, phone : this.phone, deal: this.deal};
+                const seller = { name: this.name.toUpperCase(), address: this.address, LGA : this.LGA, phone : this.phone, deal: this.deal+'', status : this.status};
                 return this.$axios.$post('http://localhost:3000/seller', seller).then(res=> {
                     console.log(res);
-                    this.name = ''; this.address = ''; this.LGA = ''; this.phone = ''; this.deal = 0
+                    this.name = ''; this.address = ''; this.LGA = ''; this.phone = ''; this.deal = 0; this.status = '';
+                    return this.$router.push('/sellers')
                 })
 
             }
