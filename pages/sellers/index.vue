@@ -12,6 +12,7 @@
       :data="vendors"
       :link="link"
       :count="count"
+      url="http://localhost:3000/seller"
     />
     </div> 
   </div>
