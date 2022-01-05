@@ -13,6 +13,7 @@ import axios from 'axios';
         :columns="columns"
         :link="link"
         :count="transactions.total"
+        url="http://localhost:3000/transaction"
         />
     </div>
   </div>
