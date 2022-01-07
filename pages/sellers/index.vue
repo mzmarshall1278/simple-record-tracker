@@ -9,9 +9,7 @@
     <div class="w-10/12 mx-auto">
       <AppTable
       :columns="columns"
-      :data="vendors"
       :link="link"
-      :count="count"
       url="http://localhost:3000/seller"
     />
     </div> 
