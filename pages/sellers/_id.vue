@@ -14,7 +14,6 @@
        <div v-if="transactions.transactions">
             <AppTable
             :columns="columns"
-            :count="transactions.count"
             :url="`http://localhost:3000/transaction/?sellerId=${seller._id}`"
             />
        </div>
