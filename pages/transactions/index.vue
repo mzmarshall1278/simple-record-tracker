@@ -9,10 +9,8 @@ import axios from 'axios';
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions</div>
     <div class="w-10/12 mx-auto">
         <AppTable
-        :data="transactions.transactions"
         :columns="columns"
         :link="link"
-        :count="transactions.total"
         url="http://localhost:3000/transaction"
         />
     </div>
