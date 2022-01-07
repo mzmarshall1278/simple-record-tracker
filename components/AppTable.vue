@@ -29,9 +29,6 @@ export default {
         columns: {
             type: Array
         },
-        data: {
-           type: Array
-        },
         link: {
             type: Object,
         },
@@ -44,7 +41,9 @@ export default {
     },
     data() {
         return {
-            page: 1
+            page: 1,
+            data: [],
+            
         }
     },
     computed: {
@@ -56,6 +55,7 @@ export default {
     methods: {
         getData(){
             return this.$axios.$get(`${this.url}`).then(res=> {
+              this.data = res.transactions || res.sellers
                 console.log(res)
             })
         },
@@ -73,7 +73,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.url)
         return this.getData()
     }
 
