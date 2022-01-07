@@ -2,9 +2,7 @@
   <div>
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions  on {{new Date(date).toLocaleDateString()}}</div>
     <AppTable
-    :data="transactions.transactions"
     :columns="columns"
-    :count="transactions.total"
     :url="`http://localhost:3000/transaction?date=${date}`"
 
     />
