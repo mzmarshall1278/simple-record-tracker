@@ -32,9 +32,6 @@ export default {
         link: {
             type: Object,
         },
-        count: {
-            type: Number
-        },
         url: {
             type: String
         }
@@ -43,6 +40,7 @@ export default {
         return {
             page: 1,
             data: [],
+            count : 0,
             
         }
     },
@@ -56,6 +54,7 @@ export default {
         getData(){
             return this.$axios.$get(`${this.url}`).then(res=> {
               this.data = res.transactions || res.sellers
+              this.count = res.total
                 console.log(res)
             })
         },
