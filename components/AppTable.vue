@@ -49,20 +49,24 @@ export default {
             if(this.count) return Math.ceil(this.count/10);
             else return 1
         },
+        computedUrl(){
+            return `${this.url}${this.url.includes('?') ? '&page=' : '?page='}${this.page}`
+        }
     },
     methods: {
         getData(){
-            return this.$axios.$get(`${this.url}`).then(res=> {
+            return this.$axios.$get(`${this.computedUrl}`).then(res=> {
               this.data = res.transactions || res.sellers
               this.count = res.total
-                console.log(res)
             })
         },
         previous(){
-            console.log('previous');
+            this.page -= 1;
+            this.getData()
         },
         next(){
-            this.$emit('next', this.page + 1);
+            this.page += 1;
+            this.getData()
         },
         changePage(index){
             this.$emit('next', this.page - 1);
