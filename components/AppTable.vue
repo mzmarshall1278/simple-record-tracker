@@ -1,7 +1,7 @@
 import axios from 'axios';
 <template>
     <div class="mb-24">
-        <table class="w-full">
+        <table class="w-full"  v-if="data.length">
             <thead>
                 <tr>
                 <th v-for="(col, key) in columns" :key="key">{{col.label}}</th>
@@ -10,17 +10,23 @@ import axios from 'axios';
             <tbody>
             <tr v-for="(row,key) in data" :key="key" @click="open(row)">
                 <td v-for="(item, key) in columns" :key="key">
-                    <span v-if="typeof row[item.value] !=='object'">{{row[item.value] || 0}}</span>
                     <span v-if="typeof row[item.value] =='object'">{{row[item.value][0][item.child]}}</span>
+                    <span v-else>{{row[item.value] || 0}}</span>
                 </td>
             </tr>
             </tbody>
-        </table>
-        <div class="flex w-auto mx-auto ">
+            <div class="flex w-auto mx-auto">
             <button :disabled="page == 1" @click="previous" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0 disabled:cursor-not-allowed" > &lt;</button>
-            <button @click="changePage(index)" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white" v-for="(page, index) in pages" :key="index" >{{index+1}}</button>
+
+            <button @click="changePage(index+1)"  class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white" v-for="(page, index) in pages" :key="index" :disabled="index+1 == page" >{{index+1}}</button>
+
             <button  :disabled="page == pages" @click="next" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0">&gt;</button>
         </div>
+        </table>
+        <div v-else class="text-center text-2xl text-red-500 my-4 font-black">
+                No Data Available :(
+            </div>
+        
     </div>
 </template>
 <script>
@@ -69,7 +75,7 @@ export default {
             this.getData()
         },
         changePage(index){
-            this.$emit('next', this.page - 1);
+            console.log(index)
         },
         open(row){
           if(this.link) this.$router.push({path: row[this.link.id], append: this.link.append});
