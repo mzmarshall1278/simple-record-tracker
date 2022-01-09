@@ -66,9 +66,8 @@
         },
         methods: {
             addNew(){
-                const seller = { name: this.name.toUpperCase(), address: this.address, LGA : this.LGA, phone : this.phone, deal: this.deal+'', status : this.status};
+                const seller = { name: this.name.toUpperCase(), address: this.address, LGA : this.LGA, phone : this.phone, deal: this.deal+'', status : this.status, dateJoined: new Date().toLocaleDateString()};
                 return this.$axios.$post('http://localhost:3000/seller', seller).then(res=> {
-                    console.log(res);
                     this.name = ''; this.address = ''; this.LGA = ''; this.phone = ''; this.deal = 0; this.status = '';
                     return this.$router.push('/sellers')
                 })
