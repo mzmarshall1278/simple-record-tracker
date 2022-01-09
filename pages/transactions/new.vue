@@ -52,13 +52,12 @@ import debounce from 'debounce'
             addNew(){
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
                 return this.$axios.$post('http://localhost:3000/transaction', transactionDetails).then(res=> {
-                    console.log(res);
+                    return this.$router.push('/transactions')
                 })
             },
             getSellers(filter){
                 const param = filter.toUpperCase();
                 this.$axios.$get(`http://localhost:3000/seller?name=${param}`).then(res => {
-                    console.log(res);
                     this.sellers = res;
                 })
             },
