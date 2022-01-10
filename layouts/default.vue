@@ -9,3 +9,9 @@ export default {
 
 }
 </script>
+<style>
+    input:focus{
+      outline: none;
+      
+  }
+</style>
