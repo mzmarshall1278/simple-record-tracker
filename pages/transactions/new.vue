@@ -16,10 +16,10 @@
                     <input placeholder="Quantity" :required="true" name="name" v-model="quantity" type="number" class="w-full py-4 pl-3 border-3 border-blue-500"/>
                 </div>
                 <div class="mt-8 w-full">
-                    <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = true">Search Seller</div>
+                    <div class="bg-blue-500 py-4 cursor-pointer text-white" @click="showDropDown = !showDropDown">{{seller ? seller.name: 'Search Seller'}}</div>
                     <div class="w-full mt-4" v-if="showDropDown">
-                        <div class="w-full mb-2"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-2 rounded focus:border-blue-700 border-blue-500" v-on:keyup.space="debounceInput" /></div>
-                        <ul v-if="searchSeller" >
+                        <div class="w-full mb-2" v-if="!seller"><input type="text" v-model="searchSeller" placeholder="search seller"  class="w-full py-4 pl-3 border-2 rounded focus:border-blue-700 border-blue-500" v-on:keyup.space="debounceInput" /></div>
+                        <ul v-if="searchSeller && showDropDown" >
                             <li class="w-full py-4 text-blue-900 hover:bg-blue-300 hover:text-white cursor-pointer" v-for="(seller, key) in sellers" :key="key" @click="setUser(seller)">{{seller.name}}</li>
                         </ul>
                     </div>
@@ -50,7 +50,7 @@ import debounce from 'debounce'
         },
         methods: {
             addNew(){
-                const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller}
+                const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller._id}
                 return this.$axios.$post('http://localhost:3000/transaction', transactionDetails).then(res=> {
                     return this.$router.push('/transactions')
                 })
@@ -62,7 +62,8 @@ import debounce from 'debounce'
                 })
             },
             setUser(user){
-                this.seller = user._id;
+                this.seller = user;
+                this.showDropDown = false;
             },
             debounceInput: debounce(function (e) {
                 this.getSellers(e.target.value)
