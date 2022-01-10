@@ -11,14 +11,14 @@ import axios from 'axios';
             <tr v-for="(row,key) in data" :key="key" @click="open(row)">
                 <td v-for="(item, key) in columns" :key="key">
                     <span v-if="typeof row[item.value] =='object'">{{row[item.value][0][item.child]}}</span>
-                    <span v-else>{{row[item.value] || 0}}</span>
+                    <span v-else>{{row[item.value] || 'Nil'}}</span>
                 </td>
             </tr>
             </tbody>
-            <div class="flex w-auto mx-auto">
+            <div class="flex w-auto mx-auto mt-3">
             <button :disabled="page == 1" @click="previous" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0 disabled:cursor-not-allowed" > &lt;</button>
 
-            <button @click="changePage(index+1)"  class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white" v-for="(page, index) in pages" :key="index" :disabled="index+1 == page" >{{index+1}}</button>
+            <button  class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0" v-for="(number, index) in pages" :key="index" @click="changePage(number)" :disabled="number == page">{{number}}</button>
 
             <button  :disabled="page == pages" @click="next" class="bg-blue-100 text-blue-800 py-4 px-8 rounded-lg mx-4 hover:bg-blue-500 hover:text-white disabled:opacity-0">&gt;</button>
         </div>
@@ -26,7 +26,6 @@ import axios from 'axios';
         <div v-else class="text-center text-2xl text-red-500 my-4 font-black">
                 No Data Available :(
             </div>
-        
     </div>
 </template>
 <script>
@@ -75,7 +74,8 @@ export default {
             this.getData()
         },
         changePage(index){
-            console.log(index)
+            this.page = index;
+            this.getData()
         },
         open(row){
           if(this.link) this.$router.push({path: row[this.link.id], append: this.link.append});
