@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-5/6 mx-auto">
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions  on {{new Date(date).toLocaleDateString()}}</div>
     <AppTable
     :columns="columns"
