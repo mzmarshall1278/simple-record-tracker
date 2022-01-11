@@ -1,6 +1,10 @@
 import axios from 'axios';
 <template>
     <div class="mb-24">
+        <div class="w-4/10 text-right">
+            <input  name="name" type="date" :required="true" v-model="date" class="w-full py-4  px-6 pl-3 border-3 border-blue-500 text-gray-400">
+            <input type="text" class=" p-3 border-2 border-blue-500 text-blue-500 rounded-full focus:border-blue-900" placeholder="search" v-model="search">
+        </div>
         <table class="w-full"  v-if="data.length">
             <thead>
                 <tr>
@@ -43,6 +47,8 @@ export default {
     },
     data() {
         return {
+            search: '',
+            date: '',
             page: 1,
             data: [],
             count : 0,
@@ -100,7 +106,5 @@ table tbody tr:nth-child(2n+1) {
   tr:hover {
       @apply bg-blue-100 text-blue-900 cursor-pointer 
   }
-  .disabled{
-      @apply border-4 border-solid
-  }
+  
 </style>
