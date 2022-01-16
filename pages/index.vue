@@ -11,6 +11,12 @@
 
 <script>
 export default { 
+
+  asyncData({$axios}){
+    return $axios.$get(`http://localhost:3000/transaction/ongoing`).then(res=> {
+      console.log(res);
+    })
+  },
   data(){
     return {
 
