@@ -16,6 +16,7 @@
     </div>
 </template>
 <script>
+import Cookies from 'js-cookie'
     export default {
         data(){
             return {
@@ -25,7 +26,23 @@
         },
         methods: {
             login(){
-                console.log(this.username, this.password);
+                this.$store.commit('setLoading', true);
+                this.$store.commit('setError', '');
+                return this.$axios.$post('http://localhost:3000/auth/login', {username: this.username, password: this.password}).then(res=> {
+                    console.log(res);
+                    this.$store.commit('setSuccess', 'Login successful');
+                    Cookies.set('token', res.accessToken, {expires: 3600*24})
+                    this.$store.commit('setToken', res.accessToken);   
+                    this.$router.push('/');                 
+                }).catch(err=> {
+                    this.$store.commit('setError', err.response.data.message);
+                    this.username = '';
+                    this.password = '';
+                    console.log(err.response.data.message);
+                }).finally(()=> {
+                    this.$store.commit('setLoading', false);
+
+                })
             }
         }
     }
