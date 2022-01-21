@@ -12,7 +12,7 @@
 <script>
 // import Cookies from 'js-cookie'
 export default { 
-  middleware: 'auth',
+  // middleware: 'auth',
   // asyncData({$axios}){
   //   return $axios.$get(`http://localhost:3000/transaction/ongoing`, {
   //     headers: {
