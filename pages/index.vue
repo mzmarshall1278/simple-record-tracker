@@ -10,18 +10,20 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 export default { 
-
-  asyncData({$axios}){
-    return $axios.$get(`http://localhost:3000/transaction/ongoing`, {
-      headers: {
-        authorization: `Bearer ${Cookies.get('token')}`
-      }
-    }).then(res=> {
-      console.log(res.length);
-    })
-  },
+  middleware: 'auth',
+  // asyncData({$axios}){
+  //   return $axios.$get(`http://localhost:3000/transaction/ongoing`, {
+  //     headers: {
+  //       authorization: `Bearer ${Cookies.get('token')}`
+  //     }
+  //   }).then(res=> {
+  //     console.log(res.length);
+  //   }).catch(err=> {
+  //     console.log(err);
+  //   })
+  // },
   data(){
     return {
 
