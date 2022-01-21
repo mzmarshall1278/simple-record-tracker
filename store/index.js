@@ -1,5 +1,3 @@
-// import Cookies from 'js-cookie'
-
 export const state = ()=> ({
     token: null,
     loading: false,
@@ -29,12 +27,3 @@ export const mutations = {
         state.success = payload
     }
 }
-
-export const actions = {
-    nuxtServerInit({commit}){
-    //  const token =  Cookies.get('token');
-    //  console.log('its',token);
-    //  commit('setToken', token)
-    }
-  }
-  
