@@ -31,7 +31,7 @@ import Cookies from 'js-cookie'
                 return this.$axios.$post('http://localhost:3000/auth/login', {username: this.username, password: this.password}).then(res=> {
                     console.log(res);
                     this.$store.commit('setSuccess', 'Login successful');
-                    Cookies.set('token', res.accessToken, {expires: 3600*24})
+                    Cookies.set('token', res.accessToken, {expires: 3600*23.99})
                     this.$store.commit('setToken', res.accessToken);   
                     this.$router.push('/');                 
                 }).catch(err=> {
