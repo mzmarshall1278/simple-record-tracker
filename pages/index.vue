@@ -5,6 +5,7 @@
     <Card :title="stock.title" :rows="stock.rows" />
     <Card :title="pending.title" :rows="pending.rows" />
     <Card :title="free.title" :rows="free.rows" />
+
     </div>
   </div>
 </template>
