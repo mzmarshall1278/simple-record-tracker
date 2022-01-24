@@ -11,12 +11,13 @@
                 <input placeholder="Password" name="username" minlength="4" :required="true" v-model="password" type="password" class=" rounded-xl w-full py-4 pl-3 border-3 border-blue-500 text-blue-500">
             </div>
             <button type="submit" class=" hover:bg-white hover:text-blue-500 mt-8 rounded-xl w-full py-4 pl-3 bg-blue-500 text-white">Login</button>
+
+            <p class="text-blue-500 mt-8"><nuxt-link to="auth/signup">Create account?</nuxt-link></p>
         </form>
         </div>
     </div>
 </template>
 <script>
-import Cookies from 'js-cookie'
     export default {
         data(){
             return {
@@ -28,11 +29,11 @@ import Cookies from 'js-cookie'
             login(){
                 this.$store.commit('setLoading', true);
                 this.$store.commit('setError', '');
-                return this.$axios.$post('http://localhost:3000/auth/login', {username: this.username, password: this.password}).then(res=> {
+                this.$auth.loginWith('local', { data: {username: this.username, password: this.password}
+                })
+                .then(res=> {
                     console.log(res);
                     this.$store.commit('setSuccess', 'Login successful');
-                    Cookies.set('token', res.accessToken, {expires: 3600*23.99})
-                    this.$store.commit('setToken', res.accessToken);   
                     this.$router.push('/');                 
                 }).catch(err=> {
                     this.$store.commit('setError', err.response.data.message);
