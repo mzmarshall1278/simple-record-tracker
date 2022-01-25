@@ -14,7 +14,7 @@
 export default {
   methods:{
     close(){
-      return this.$store.commit('setError', null);
+      return this.$store.commit('setError', '');
     }
   },
   computed: {
