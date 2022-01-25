@@ -3,7 +3,7 @@
     <div class="text-5xl font-black text-blue-500 text-center mt-12">Transactions  on {{new Date(date).toLocaleDateString()}}</div>
     <AppTable
     :columns="columns"
-    :url="`http://localhost:3000/transaction?date=${date}`"
+    :url="`/transaction?date=${date}`"
 
     />
   </div>
@@ -11,7 +11,7 @@
 <script>
     export default{
         async asyncData({$axios ,params}){
-           const transactions = await $axios.$get(`http://localhost:3000/transaction?date=${params.id}`);
+           const transactions = await $axios.$get(`/transaction?date=${params.id}`);
            return {transactions};
                 
     },
