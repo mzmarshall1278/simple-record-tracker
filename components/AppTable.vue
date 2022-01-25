@@ -66,9 +66,16 @@ export default {
     },
     methods: {
         getData(){
-            return this.$axios.$get(`${this.computedUrl}`).then(res=> {
+            return this.$axios.$get(`${this.computedUrl}`, {
+                headers: {
+                    authorization: this.$auth.strategies.local.token.$storage._state['_token.local'],
+                   'Content-Type': 'application/json',
+               }
+            }).then(res=> {
               this.data = res.transactions || res.sellers
               this.count = res.total
+            }).catch(error=> {
+                console.log(error);
             })
         },
         previous(){
