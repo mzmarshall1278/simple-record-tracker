@@ -11,7 +11,7 @@ import axios from 'axios';
         <AppTable
         :columns="columns"
         :link="link"
-        url="http://localhost:3000/transaction"
+        url="/transaction"
         />
     </div>
   </div>
@@ -19,15 +19,7 @@ import axios from 'axios';
 
 <script>
 export default {
-    async asyncData({$axios}){
-           const transactions = await $axios.$get(`http://localhost:3000/transaction`, {
-               headers: {
-                   'Content-Type': 'application/json'
-               }
-           });
-           return {transactions};
-                
-    },
+    
     data() {
         return {
             link: {path: '/transactions/', id: '_id', append: true},
@@ -42,15 +34,7 @@ export default {
         };
     },
     computed: {
-        stock() {
-            return this.$store.getters["stock/getStockDetails"];
-        },
-        pending() {
-            return this.$store.getters["stock/getPendingDetails"];
-        },
-        free() {
-            return this.$store.getters["stock/getFreeDetails"];
-        }
+
     },
     methods: {
         getTransactions(page){
