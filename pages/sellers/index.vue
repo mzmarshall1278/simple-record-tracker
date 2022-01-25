@@ -10,7 +10,7 @@
       <AppTable
       :columns="columns"
       :link="link"
-      url="http://localhost:3000/seller"
+      url="/seller"
     />
     </div> 
   </div>
