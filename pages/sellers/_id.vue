@@ -14,7 +14,7 @@
        <div v-if="transactions.transactions">
             <AppTable
             :columns="columns"
-            :url="`http://localhost:3000/transaction/?sellerId=${seller._id}`"
+            :url="`/transaction/?sellerId=${seller._id}`"
             />
        </div>
     </div>
