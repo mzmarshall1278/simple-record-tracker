@@ -30,18 +30,7 @@ export default {
                 {label: 'Total Weight', value: 'totalWeight'},
                 {label: 'Total Quantity', value: 'totalQuantity'}
             ],
-            page: 1
         };
-    },
-    computed: {
-
-    },
-    methods: {
-        getTransactions(page){
-        //    return  axios.get(`http://localhost:3000/transactions?page=${page}&`).then(res => {
-        //         this.transactions = res.data
-        //     });
-        }
     }
 }
 </script>
