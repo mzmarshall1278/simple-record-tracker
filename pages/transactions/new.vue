@@ -51,14 +51,23 @@ import debounce from 'debounce'
         methods: {
             addNew(){
                 const transactionDetails = {date: this.date, weight: +this.weight, price: +this.price, quantity: +this.quantity, seller: this.seller._id}
-                return this.$axios.$post('http://localhost:3000/transaction', transactionDetails).then(res=> {
-                    return this.$router.push('/transactions')
+                return this.$axios.$post('/transaction', transactionDetails).then(res=> {
+                 this.$router.push('/transactions');
+                }).catch(error=> {
+                    this.$store.commit('setError', error.response.message);
+                }).finally(()=>{
+                    this.$store.commit('setLoading', false);
                 })
             },
             getSellers(filter){
+                this.$store.commit('setLoading', true);
                 const param = filter.toUpperCase();
-                this.$axios.$get(`http://localhost:3000/seller?name=${param}`).then(res => {
+                this.$axios.$get(`/seller?name=${param}`).then(res => {
                     this.sellers = res;
+                }).catch(error=> {
+                    this.$store.commit('setError', error.response.message);
+                }).finally(()=>{
+                    this.$store.commit('setLoading', false);
                 })
             },
             setUser(user){
