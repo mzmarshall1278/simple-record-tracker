@@ -10,11 +10,6 @@
 </template>
 <script>
     export default{
-        async asyncData({$axios ,params}){
-           const transactions = await $axios.$get(`/transaction?date=${params.id}`);
-           return {transactions};
-                
-    },
         data(){
             return {
                 columns: [
@@ -23,7 +18,6 @@
                         {label: 'Quantity', value: 'quantity'},
                         {label: 'Price', value: 'price'},
                 ],
-            page: 1
             }
         },
         computed: {
