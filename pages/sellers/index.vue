@@ -30,22 +30,8 @@ export default {
                 {value: 'deal', label: 'Deal'},
                 {value: 'dateJoined', label: 'Date Joined'},
                 
-            ],
-             vendors: [],
-            page: 1,
-            count: 0
+            ]
         };
-    },
-    methods: {
-        getVendors(page) {
-            this.$axios.get(`http://localhost:3000/seller?page=${page}`).then(res => {
-                this.vendors = res.data.sellers;
-                this.count = res.data.total
-            });
-        }
-    },
-    mounted() {
-        this.getVendors('1');
-    },
+    }
 }
 </script>
