@@ -9,9 +9,9 @@
             <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">DEAL</span> <span class="text-blue-500">{{seller.deal == 0 ? 'TWO WEEKS' : seller.deal == 1 ? 'MONTHLY' : 'NO TIME RESTRICTION'}}</span></div>
             <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">STATUS</span> <span class="text-blue-500">{{seller.status}}</span></div>
             <div class="flex justify-between font-bold w-3/6 font-lg"><span class="text-green-500">DATE JOINED</span> <span class="text-blue-500">{{new Date(seller.dateJoined).toLocaleDateString()}}</span></div>
-            <button @click="getTransactions" class="mt-5 bg-blue-500 text-white p-4 rounded hover:bg-white hover:text-blue-500">Show Transactions</button>
+            <button v-if="!show" @click="show = true" class="mt-5 bg-blue-500 text-white p-4 rounded hover:bg-white hover:text-blue-500">Show Transactions</button>
         </div>
-       <div v-if="transactions.transactions">
+       <div v-if="show">
             <AppTable
             :columns="columns"
             :url="`/transaction/?sellerId=${seller._id}`"
@@ -23,6 +23,7 @@
     export default {
         data(){
             return {
+                show: false,
                 transactions: [],
                 columns: [
                     {label: 'Date', value: 'date'},
@@ -34,21 +35,12 @@
         },
         async asyncData({$axios, params}){
             const seller = await $axios.$get(`http://localhost:3000/seller/${params.id}`);
-            // const transactions = await $axios.$get(`http://localhost:3000/transactions?sellerId=${seller.id}`);
             console.log(seller);
            return {seller}; 
         },
         computed: {
             param(){
                 return this.$route.params.id
-            }
-        },
-        methods: {
-            getTransactions(){
-                console.log(this.seller._id);
-                this.$axios.$get(`http://localhost:3000/transaction?sellerId=${this.seller._id}`).then(res=> {
-                    this.transactions = res;
-                })
             }
         }
     }
