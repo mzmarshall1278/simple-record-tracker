@@ -1,10 +1,10 @@
 import axios from 'axios';
 <template>
     <div class="mb-24">
-        <div class="w-4/10 text-right">
+        <!-- <div class="w-4/10 text-right">
             <input  name="name" type="date" :required="true" v-model="date" class="w-full py-4  px-6 pl-3 border-3 border-blue-500 text-gray-400">
             <input type="text" class=" p-3 border-2 border-blue-500 text-blue-500 rounded-full focus:border-blue-900" placeholder="search" v-model="search">
-        </div>
+        </div> -->
         <table class="w-full"  v-if="data.length">
             <thead>
                 <tr>
@@ -66,16 +66,16 @@ export default {
     },
     methods: {
         getData(){
-            return this.$axios.$get(`${this.computedUrl}`, {
-                headers: {
-                    authorization: this.$auth.strategies.local.token.$storage._state['_token.local'],
-                   'Content-Type': 'application/json',
-               }
-            }).then(res=> {
+            this.$store.commit('setLoading', true);
+            return this.$axios.$get(`${this.computedUrl}`).then(res=> {
               this.data = res.transactions || res.sellers
               this.count = res.total
+              this.$store.commit('setLoading', true);
             }).catch(error=> {
+                this.$store.commit('setError', error.response.message);
                 console.log(error);
+            }).finally(()=> {
+                this.$store.commit('setLoading', false);
             })
         },
         previous(){
